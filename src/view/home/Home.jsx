@@ -45,7 +45,7 @@ export default class Home extends React.Component {
         const that = this;
         const now = moment();
         findThreadsLoad().then(res => {
-            const data = res.data;
+            const data = res.data.data;
             const average = list => list.reduce((prev, curr) => prev + curr) / list.length;
 
             //计算多个线程的平均负载率和平均延时

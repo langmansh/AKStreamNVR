@@ -139,6 +139,23 @@ export default class EditForm extends React.Component {
 					)
                 },{
 
+                    label: '设备流类型',
+                    name: 'deviceStreamType',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+					comp: (
+					    <Radio.Group buttonStyle="solid">
+					        <Radio.Button value={"GB28181"}>GB28181</Radio.Button>
+							<Radio.Button value={"Rtsp"}>Rtsp</Radio.Button>
+					        <Radio.Button value={"Http"}>Http</Radio.Button>
+							<Radio.Button value={"Rtmp"}>Rtmp</Radio.Button>
+					    </Radio.Group>
+					)
+                },{
+
                     label: '拉流方式',
                     name: 'methodByGetStream',
                     option: {
