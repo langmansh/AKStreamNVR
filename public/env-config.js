@@ -1,0 +1,4 @@
+window._env_ = {
+  REACT_APP_API_HOST: "11.11.201.22",
+  AKSTREAM_WEB_API:"11.11.201.22:5800",
+}

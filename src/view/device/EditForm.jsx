@@ -1,0 +1,502 @@
+import React from 'react';
+import {Button, Radio, Icon, Input, InputNumber, message, Select} from "antd";
+import PropTypes from "prop-types";
+import RvForm from "../../component/RvForm/RvForm";
+
+import {BizRegex} from "../../util/globalHelp";
+import {createChannel, findChannel, modifyChannel,ActiveVideoChannel,ModifyVideoChannel,GetVideoChannelList,AddVideoChannel} from "../../service/channel";
+import RvSwitch from "../../component/RvSwitch/RvSwitch";
+import UrlParse from 'url-parse'
+
+
+@RvForm.create()
+export default class EditForm extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: false,
+            formData: {},
+            fields: [
+                {
+
+                    label: '流媒体服务器',
+					extra:'流媒体服务器的ID',
+                    name: 'mediaServerId',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+                }, {
+
+                    label: 'App',
+					extra:'应用标识APP',
+					placeholder:'rtp',
+                    name: 'app',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+                },{
+
+                    label: 'vhost',
+					extra:'虚拟主机vhost',
+					placeholder:'__defaultVhost__',
+                    name: 'vhost',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+                },{
+
+                    label: '设备名称',
+                    name: 'channelName',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+                },{
+
+                    label: 'Device ID',
+                    name: 'deviceId',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+                },{
+
+                    label: 'Channel ID',
+                    name: 'channelId',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+                },{
+
+                    label: 'ipV4',
+                    name: 'ipV4Address',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+                },{
+
+                    label: '录制计划模板名称',
+                    name: 'recordPlanName',
+                    option: {
+                        rules: [{
+                            required: false,
+                        },]
+                    },
+                },{
+
+                    label: '录制时长（秒）',
+                    name: 'recordSecs',
+                    option: {
+                        rules: [{
+                            required: false,
+                        },]
+                    },
+                },{
+
+                    label: '网络类型',
+					extra:'固定网络、移动网络',
+                    name: 'deviceNetworkType',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+					comp: (
+					    <Radio.Group buttonStyle="solid">
+					        <Radio.Button value={"Fixed"}>Fixed</Radio.Button>
+							<Radio.Button value={"Mobile"}>Mobile</Radio.Button>
+					    </Radio.Group>
+					)
+                },{
+
+                    label: '设备类型',
+                    name: 'videoDeviceType',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+					comp: (
+					    <Radio.Group buttonStyle="solid">
+					        <Radio.Button value={"NVR"}>NVR</Radio.Button>
+							<Radio.Button value={"DVR"}>DVR</Radio.Button>
+					        <Radio.Button value={"IPC"}>IPC</Radio.Button>
+							<Radio.Button value={"UNKNOW"}>UNKNOW</Radio.Button>
+					    </Radio.Group>
+					)
+                },{
+
+                    label: '拉流方式',
+                    name: 'methodByGetStream',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+					comp: (
+					    <Radio.Group buttonStyle="solid">
+							<Radio.Button value={"None"}>None</Radio.Button>
+					        <Radio.Button value={"SelfMethod"}>SelfMethod</Radio.Button>
+							<Radio.Button value={"UseFFmpeg"}>UseFFmpeg</Radio.Button>
+					    </Radio.Group>
+					)
+                },{
+
+                    label: 'Rtsp视频地址',
+					extra: '仅在拉流方式是SelfMethod或UseFFmpeg时需要，默认None为GB28181拉流',
+                    name: 'videoSrcUrl',
+                    option: {
+                        rules: [{
+                            required: false,
+                        },]
+                    },
+					comp: <Input/>,
+                },{
+
+                    label: '协议类型',
+                    name: 'rtpWithTcp',
+                    option: {
+                        rules: [{
+                            required: true,
+                        },]
+                    },
+					comp: (
+					    <Radio.Group buttonStyle="solid">
+					        <Radio.Button value={false}>UDP</Radio.Button>
+					        <Radio.Button value={true}>TCP</Radio.Button>
+					    </Radio.Group>
+					)
+                },{
+
+                    label: '自动推流',
+					extra: '服务开启后一直推流',
+                    name: 'autoVideo',
+                    option: {
+                        rules: [{
+                            required: false,
+                        },]
+                    },
+					comp: <RvSwitch/>,
+                },{
+
+                    label: '自动断流',
+					extra: '无人观看自动断流，启用自动推流请勿启用自动断流',
+                    name: 'noPlayerBreak',
+                    option: {
+                        rules: [{
+                            required: false,
+                        },]
+                    },
+					comp: <RvSwitch/>,
+                },{
+
+                    label: '自动录制',
+                    name: 'autoRecord',
+                    option: {
+                        rules: [{
+                            required: false,
+                        },]
+                    },
+					comp: <RvSwitch/>,
+                },{
+
+                    label: '云台控制',
+                    name: 'hasPtz',
+                    option: {
+                        rules: [{
+                            required: false,
+                        },]
+                    },
+					comp: <RvSwitch/>,
+                },{
+
+                    label: '默认端口',
+					extra: '设备是否使用流媒体默认rtp端口，如10000端口',
+                    name: 'defaultRtpPort',
+                    option: {
+                        rules: [{
+                            required: false,
+                        },]
+                    },
+					comp: <RvSwitch/>,
+                },{
+
+                    label: '启用',
+					extra: '是否启用设备',
+                    name: 'enabled',
+                    option: {
+                        rules: [{
+                            required: false,
+                        },]
+                    },
+					comp: <RvSwitch/>,
+                }
+				
+				
+				// {
+    //                 label: '是否启用',
+    //                 name: 'active',
+    //                 option: {
+    //                     rules: [{
+    //                         required: false,
+    //                     },]
+    //                 },
+    //                 comp: <RvSwitch/>,
+    //             }, {
+    //                 label: '虚拟主机Vhost',
+    //                 name: 'vhost',
+    //                 placeholder: "__defaultVhost__",
+    //                 option: {
+    //                     rules: [{
+    //                         required: false,
+    //                     },]
+    //                 }
+    //             }, {
+    //                 label: '应用标识App',
+    //                 name: 'app',
+    //                 placeholder: "live",
+    //                 option: {
+    //                     rules: [{
+    //                         required: true,
+    //                     },]
+    //                 }
+    //             }, {
+    //                 label: '通道标识Stream',
+    //                 placeholder: "stream_1",
+    //                 name: 'stream',
+    //                 option: {
+    //                     rules: [{
+    //                         required: true,
+    //                     },]
+    //                 }
+    //             }, {
+    //                 label: '接入协议',
+    //                 name: 'source_protocol',
+    //                 option: {
+    //                     rules: [{
+    //                         required: true,
+    //                     },]
+    //                 },
+    //                 comp: (
+    //                     <Radio.Group buttonStyle="solid">
+    //                         <Radio.Button value={"rtsp:"}>RTSP</Radio.Button>
+    //                         <Radio.Button value={"rtmp:"}>RTMP</Radio.Button>
+    //                         <Radio.Button value={"hls:"}>HLS</Radio.Button>
+    //                     </Radio.Group>
+    //                 )
+    //             }, {
+    //                 label: '接入地址',
+    //                 placeholder: "rtsp://admin:12345@172.6.22.106:554/h264/ch33/main/av_stream",
+    //                 name: 'source_url',
+    //                 option: {
+    //                     rules: [{
+    //                         required: true,
+    //                     },]
+    //                 },
+    //                 comp: <Input/>
+    //             }, {
+    //                 label: 'FFMpeg拉流参数配置',
+    //                 _source_protocol_filter: "hls:",
+    //                 placeholder: "-i %s -c:a aac -strict -2 -ar 44100 -ab 48k -c:v libx264 -f flv %s",
+    //                 extra: '仅在接入协议为 HLS 时有效，非专业人员请不要随意设置',
+    //                 name: 'ffmpeg_cmd',
+    //                 option: {
+    //                     rules: [{
+    //                         required: false,
+    //                     },]
+    //                 }
+    //             }, {
+    //                 label: 'RTSP传输方式',
+    //                 _source_protocol_filter: "rtsp:",
+    //                 extra: '仅在接入类型为 RTSP 时有效!',
+    //                 name: 'rtsp_transport',
+    //                 option: {
+    //                     rules: [{
+    //                         required: true,
+    //                     },]
+    //                 },
+    //                 comp: <Radio.Group buttonStyle="solid">
+    //                     <Radio.Button value={1}>TCP</Radio.Button>
+    //                     <Radio.Button value={0}>UDP</Radio.Button>
+    //                 </Radio.Group>
+    //             }, {
+    //                 label: '录像保留(天)',
+    //                 extra: '不开启录像，填0。',
+    //                 name: 'record_mp4',
+    //                 option: {
+    //                     rules: [{
+    //                         required: true,
+    //                     },]
+    //                 },
+    //                 comp: <InputNumber min={0}/>
+    //             }, {
+    //                 label: 'HLS直播',
+    //                 name: 'enable_hls',
+    //                 option: {
+    //                     rules: [{
+    //                         required: false,
+    //                     },]
+    //                 },
+    //                 comp: <RvSwitch/>,
+    //             }, {
+    //                 label: '按需直播',
+    //                 extra: '仅在不开启录像时有效!',
+    //                 name: 'on_demand',
+    //                 option: {
+    //                     rules: [{
+    //                         required: false,
+    //                     },]
+    //                 },
+    //                 comp: <RvSwitch/>,
+    //             }
+            ]
+        }
+    }
+
+    componentDidMount() {
+        const {mode,channel,params} = this.props;
+		if(mode == "active" || mode == "edit")
+		{
+			this.setState({
+			    loading: true,
+			})
+			GetVideoChannelList({
+				pageIndex: 1,
+				pageSize: 1,
+				orderBy: [
+				    {
+				      "fieldName": "mediaServerId",
+				      "orderByDir": 0
+				    }
+				],
+			    mainId:channel.mainId,
+			    ...params
+			}).then(res => {
+				this.setState({
+				    formData: {
+				        ...res.data.videoChannelList[0]
+				    },
+				})
+				
+			}).finally(() => {
+			    this.setState({
+			        loading: false,
+			    })
+			})
+		} else {
+            this.setState({
+                formData: {
+
+                },
+            })
+        }
+    }
+
+
+    handleEditSubmit = (values) => {
+        const {channel} = this.props;
+        ModifyVideoChannel(channel.mainId, values).then((res) => {
+            if (res._statusCode == 200 && res._success == true) {
+                message.info("编辑设备成功!");
+                this.closeModalIfExist({triggerCancel: true, refresh: true});
+            } else {
+                message.error(res.data.Message);
+            }
+        })
+    }
+
+    handleCreateSubmit = (values) => {
+        // this.handleSubmit(createChannel, values);
+        AddVideoChannel(values).then((res) => {
+            if (res._statusCode == 200 && res._success == true) {
+                message.info("添加设备成功!");
+                this.closeModalIfExist({triggerCancel: true, refresh: true});
+            } else {
+                message.error(res.data.Message);
+            }
+        })
+    }
+	
+	handleActiveSubmit = (values) => {
+	    const {channel} = this.props;
+	    ActiveVideoChannel(channel.mainId, values).then((res) => {
+	        if (res._statusCode == 200 && res._success == true) {
+	            message.info("激活设备成功!");
+	            this.closeModalIfExist({triggerCancel: true, refresh: true});
+	        } else {
+	            message.error(res.data.Message);
+	        }
+	    })
+	}
+
+    handleSubmit = (serviceFunc, values) => {
+
+    }
+
+    closeModalIfExist = (args) => {
+        if (this.props.closeWrappingModal)
+            this.props.closeWrappingModal(args);
+    }
+
+    render() {
+        const {fields, loading, formData} = this.state;
+        const {mode, form} = this.props;
+
+        let _fields = fields;
+        // const sourceProtocol = form.getFieldValue("source_protocol") || formData["source_protocol"];
+        // if (sourceProtocol) {
+        //     _fields = _fields.filter(f => {
+        //         return !f._source_protocol_filter || f._source_protocol_filter == sourceProtocol;
+        //     })
+        // } else {
+        //     _fields = _fields.filter(f => {
+        //         return !f._source_protocol_filter;
+        //     })
+        // }
+
+        // const recordMp4 = form.getFieldValue("record_mp4") || formData["record_mp4"];
+        // if (recordMp4) {
+        //     _fields = _fields.filter(f => {
+        //         return f.name != "on_demand";
+        //     })
+        // }
+
+        return (
+            <RvForm
+                footer={<div>
+                    {mode != "view" ? <Button type="primary" htmlType="submit">确定</Button> : null}
+                    <Button onClick={this.closeModalIfExist}>放弃</Button>
+                </div>}
+                loading={loading}
+                onEditSubmit={this.handleEditSubmit}
+                onCreateSubmit={this.handleCreateSubmit}
+				onActiveSubmit={this.handleActiveSubmit}
+                {...this.props}>
+
+                {RvForm.Item.transform(_fields, mode, formData)}
+            </RvForm>
+        );
+    }
+
+    static contextTypes = {}
+    static propTypes = {
+        id: PropTypes.any,
+        mode: PropTypes.string,
+    }
+    static defaultProps = {
+        mode: "create",
+    }
+}

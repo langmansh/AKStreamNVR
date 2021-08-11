@@ -1,0 +1,126 @@
+.rv-ant-layout.ant-layout .rv-page {
+    height: 100%;
+    .rv-page-header {
+        display: flex;
+        z-index: 30;
+        background: #fcfcfcf2;
+        padding: 0 16px;
+        vertical-align: middle;
+        line-height: 48px;
+        height: auto;
+        min-height: 48px;
+        box-shadow: 0 0 1px 0 rgba(0, 0, 0, .14);
+
+        .rv-page-header-wrapper {
+            display: flex;
+            width: 100%;
+
+            .rv-page-header-title {
+                font-size: 18px;
+                font-weight: 600;
+
+                .ant-breadcrumb {
+                    float: left;
+                    margin-right: 16px;
+                    font-size: 18px;
+                    line-height: 48px;
+                }
+            }
+            .rv-page-header-content {
+                flex: 1;
+            }
+
+            .rv-page-header-tools {
+                > div {
+                    .ant-select, > button, > span {
+                        margin-left: 8px;
+                    }
+                }
+                .ant-select, > button, > span {
+                    margin-left: 8px;
+                }
+            }
+
+        }
+    }
+
+    .rv-page-content {
+        overflow-x: hidden;
+        .rv-page-content-inner {
+            padding: 16px;
+            position: relative;
+            clear: both;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        .rv-page-sider-drawer-layout {
+            height: 100%;
+            .ant-menu-inline {
+                border-right: none;
+            }
+            .rv-page-sider-drawer {
+                .ant-layout-sider-zero-width-trigger {
+                    display: none;
+                }
+
+                .rv-page-sider-drawer-inner {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+
+
+                }
+
+                .rv-page-sider-drawer-trigger-wrapper {
+                    position: absolute;
+                    top: 0;
+                    right: -16px;
+                    bottom: 0;
+                    width: 16px;
+                    display: flex;
+                    align-items: center;
+                    z-index: 1;
+
+                    .drawer-trigger {
+                        height: 100%;
+                        flex-direction: column;
+                        justify-content: center;
+                        cursor: pointer;
+
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+
+                        &:before {
+                            content: "";
+                            display: block;
+                            position: relative;
+                            width: 2px;
+                            height: 8px;
+                            background-color: #ccc;
+                            border-radius: 1px;
+                            transition: all .3s ease-in-out;
+                        }
+                        &:after {
+                            content: "";
+                            display: block;
+                            position: relative;
+                            width: 2px;
+                            height: 8px;
+                            background-color: #ccc;
+                            border-radius: 1px;
+                            transition: all .3s ease-in-out;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+

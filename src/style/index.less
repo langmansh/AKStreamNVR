@@ -1,0 +1,361 @@
+@import '~antd/dist/antd.less';
+@import "./variable.less";
+@import "./animate.less";
+@import "./text.less";
+@import url(//at.alicdn.com/t/font_719966_6zon69ssxrr.css);
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft Yahei';
+
+    overflow-y: hidden;
+    min-width: 1300px;
+    background-color: #f1f2f5 !important;
+
+    //字体抗锯齿
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root{
+
+    height: 100%;
+}
+
+.home-page{
+    .rv-page-header-tools{
+        >div{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            >.ant-btn{
+                margin-left:8px;
+            }
+
+        }
+    }
+}
+
+.pb-s {
+    padding-bottom: @spacer * 0.5;
+}
+
+.pb-left {
+    padding-left: @spacer * 0.5;
+}
+
+.pb-m {
+    padding-bottom: @spacer * 1;
+}
+
+.pb-l {
+    padding-bottom: @spacer * 2;
+}
+
+.pa-s {
+    padding: @spacer * 0.5;
+}
+
+.pa-m {
+    padding: @spacer * 1;
+}
+
+.pa-l {
+    padding: @spacer * 2;
+}
+
+.mr-s {
+    margin-right: @spacer * 0.5;
+}
+
+.mr-m {
+    margin-right: @spacer * 1;
+}
+
+.ml-m {
+    margin-left: @spacer * 1;
+}
+
+.color-black {
+    color: #343434;
+}
+
+.mr-l {
+    margin-right: @spacer * 2;
+}
+
+.mb-s {
+    margin-bottom: @spacer * 0.5;
+}
+
+.mb-m {
+    margin-bottom: @spacer * 1;
+}
+
+.mb-l {
+    margin-bottom: @spacer * 2;
+}
+
+.margin-bottom-none {
+    margin-bottom: 0 !important;
+}
+
+.text {
+    font-size: 1rem;
+}
+
+.text-2x {
+    font-size: 2rem;
+}
+
+.text-3x {
+    font-size: 3rem;
+}
+
+.text-4x {
+    font-size: 4rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-danger,
+.text-danger-hover a:hover {
+    color: #f44455;
+}
+
+.text-dark,
+.text-dark-hover a:hover {
+    color: #2e3e4e;
+}
+
+.text-info,
+.text-info-hover a:hover {
+    color: #6887ff;
+}
+
+.text-success,
+.text-success-hover a:hover {
+    color: #6cc788;
+}
+
+.text-blue,
+.text-blue-hover a:hover {
+    color: #2196f3;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.active-text {
+    color: @contentText !important;
+}
+
+.inactive-text {
+    color: @deleteText !important;
+}
+
+.section {
+    background: #fff;
+    border-radius: 8px;
+}
+
+.common-block {
+    //padding: 0 15px;
+}
+
+.operate-buttons {
+    text-align: right;
+    padding: 6px 7px;
+    font-size: 14px;
+    .active-text {
+        margin-left: 20px;
+    }
+    a:hover {
+        text-decoration: none;
+        color: @contentText;
+    }
+    a {
+        color: #343434;
+    }
+    span {
+        cursor: pointer;
+        i {
+            margin-right: 5px;
+            font-size: 12px;
+        }
+    }
+    span:hover {
+        color: @contentText;
+    }
+    .delete-multi {
+        float: left;
+    }
+}
+
+.contentLoading {
+    position: absolute;
+    top: 118px;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    z-index: 9999999999;
+    text-align: center;
+    background: rgba(211, 211, 211, 0.3);
+    .ant-spin {
+        position: absolute;
+        top: 50%;
+        margin-top: -21px;
+    }
+}
+
+.hideContentLoading {
+    display: none;
+}
+
+.hidden-ele {
+    height: 0 !important;
+    overflow: hidden;
+}
+
+.hidden-map {
+    visibility: hidden;
+    position: relative;
+    z-index: -1;
+}
+
+.hidden-all {
+    display: none;
+}
+
+.show-ele {
+    display: block !important;
+}
+
+.common-button {
+    border-radius: 15px;
+}
+
+.tree-page {
+    position: relative;
+    .right-content {
+        margin-left: 200px;
+    }
+
+    .left-tree {
+        width: 185px;
+        float: left;
+        position: absolute;
+        left: 0;
+        border-radius: 8px;
+        padding-bottom: 0;
+        padding-top: 32px;
+        .tree-area:hover {
+            overflow: auto;
+        }
+        .tree-area {
+            overflow: hidden;
+            max-height: 500px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        .region-title {
+            text-align: center;
+            color: #fff;
+            background: #60a2f3;
+            position: absolute;
+            top: 0;
+            border-radius: 8px 8px 0 0;
+            border-bottom: #d4d4d4;
+            width: 100%;
+            height: 32px;
+            line-height: 32px;
+        }
+    }
+}
+
+.modal-middle {
+    width: 80%;
+    min-width: 700px;
+}
+
+.modal-large {
+    width: 90%;
+    min-width: 900px;
+}
+
+.select-button {
+    cursor: pointer;
+}
+
+.text-es {
+    display: inline-block;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.modal-button {
+    border-radius: 15px;
+    width: 87px;
+    height: 30px;
+}
+
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.no-all-padding {
+    padding: 0 !important;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.ant-btn > .rvicon + span, .ant-btn > span + .rvicon {
+    margin-left: 8px;
+}
+
+.ant-btn {
+    font-size: 14px;
+}
+
+.dashboard-card {
+    .ant-tabs-large .ant-tabs-tab {
+        padding: 12px;
+    }
+    .ant-card-head-title {
+        padding: 12px 0;
+    }
+    .ant-card-extra {
+        padding: 8px 0;
+    }
+
+    .ant-tabs-tab-active.ant-tabs-tab {
+        color: #000000d9;
+    }
+    .ant-tabs-ink-bar{
+        background-color: #000000d9;
+    }
+}
+
+

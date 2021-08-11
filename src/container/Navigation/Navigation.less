@@ -1,0 +1,202 @@
+.navbar {
+    position: relative;
+    min-height: 48px;
+    background-color: #1898d7;
+    z-index: 50;
+
+    border: 0;
+    margin-bottom: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    transition: all .35s ease;
+
+    .navbar-header {
+        float: left;
+        display: inline-flex;
+
+        .navbar-home {
+            border-radius: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0;
+            font-size: 30px;
+            color: #fcfcfc;
+            text-align: center;
+            padding: 0 16px;
+            border-width: 0;
+            line-height: 48px;
+            width: 80px;
+            height: 100%;
+            background: url("../../style/image/login/logo32.png") no-repeat center center;
+            background-size: 26px;
+        }
+    }
+
+    .navbar-menu, .navbar-right {
+        .ant-menu {
+            color: #fcfcfc;
+            background: #0000;
+        }
+    }
+
+    .navbar-menu {
+        float: left;
+        line-height: 48px;
+        color: #fff;
+        font-size: 16px;
+        outline: 0;
+
+        .rv-navigation-menu {
+            margin: 0 80px;
+            font-size: 14px;
+
+            > .ant-menu-item-selected {
+                border-bottom: 2px solid #fff;
+                border-bottom-width: 2px;
+                border-bottom-style: solid;
+                border-bottom-color: #fff;
+                color: #fff;
+                background: #0000001a;
+            }
+        }
+    }
+
+    .navbar-right {
+        float: right !important;
+
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style: outside none none;
+
+        .ant-badge,
+        .ant-menu-horizontal .ant-menu-item-selected > a,
+        .ant-menu-horizontal .ant-menu-item-selected > a:hover {
+            color: #fff;
+        }
+
+        .ant-menu-item .anticon,
+        .ant-menu-submenu-title .anticon {
+            font-size: 24px;
+            vertical-align: middle;
+            line-height: 18px;
+            margin-right: 0;
+        }
+
+        .logined-user-avatar-wrap {
+            width: 107px;
+            display: flex;
+            height: 46px;
+            align-items: center;
+        }
+
+        .logined-user-avatar-desc {
+            display: inline-flex;
+            flex-direction: column;
+            font-size: 12px;
+            align-items: center;
+            line-height: 46px;
+            padding-right: 5px;
+
+            > span {
+                line-height: 12px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                text-align: left;
+                width: 70px;
+                &:last-child {
+                    font-size: 14px;
+                    margin-top: 3px;
+
+                }
+            }
+        }
+
+    }
+
+    &.module-dashboard {
+        background-color: #1898d7;
+    }
+    &.module-bpm {
+        background-color: #3f51b5;
+    }
+    &.module-address-list {
+        background-color: #00897b;
+    }
+    &.module-mail {
+        //background-color: #3f51b5;
+        background-color: #4e7702;
+    }
+    &.module-disk {
+        background-color: #6252cd;
+    }
+    &.module-setting {
+        background-color: #424242;
+    }
+}
+
+.navbar-popover {
+    width: 160px;
+    .ant-popover-inner-content {
+        padding: 0;
+    }
+    .ant-menu-vertical > .ant-menu-item {
+        font-size: 14px;
+    }
+
+    .ant-menu-item:hover, .ant-menu-submenu-title:hover {
+        background: #f1f1f1;
+    }
+}
+
+.ant-tooltip .rv-nav-menu-icon {
+    display: none;
+}
+
+.rv-ant-layout {
+    .nav-text {
+        font-size: 14px;
+        vertical-align: baseline;
+        display: inline-block;
+    }
+
+    .ant-layout-sider > .ant-layout-sider-children > .ant-menu {
+        margin: 16px 0;
+    }
+
+    .ant-menu-item, .ant-menu-submenu-title {
+
+        .rvicon, .anticon {
+            min-width: 14px;
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        .ant-avatar{
+            .rvicon, .anticon {
+                margin-right: 0;
+            }
+        }
+
+    }
+
+    .ant-layout-sider-collapsed {
+        & > .ant-layout-sider-children {
+            & > .ant-menu {
+                & > .ant-menu-item .nav-text,
+                & > .ant-menu-submenu > .ant-menu-submenu-title .nav-text {
+                    display: none;
+                }
+
+                & > .ant-menu-item > .anticon,
+                & > .ant-menu-item > a > .rvicon,
+                & > .ant-menu-submenu > .ant-menu-submenu-title .anticon,
+                & > .ant-menu-submenu > .ant-menu-submenu-title .rvicon {
+                    font-size: 20px;
+                    line-height: 42px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+}

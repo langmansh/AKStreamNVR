@@ -1,0 +1,82 @@
+
+.channel-config-panellist {
+  .ant-list-pagination {
+    text-align: center;
+  }
+}
+
+
+.channel-config-panel {
+  &.active {
+    opacity: 1;
+  }
+
+  opacity: 0.7;
+
+  .channel-config-btn {
+    margin-left: 12px;
+  }
+
+  .channel-config-edit-btn {
+
+  }
+
+  .ant-card-body{
+    padding: 8px;
+  }
+
+  .channel-config-active-switch {
+    height: 30px;
+    line-height: 28px;
+    width: 80px;
+    margin-right: 20px;
+
+    &:after {
+      width: 26px;
+      height: 26px;
+      border-radius: 26px;
+    }
+  }
+
+  .channel-config-view-panel-inner {
+    > div {
+      display: flex;
+      color: #000000;
+
+      > div:first-child {
+        width: 150px;
+        padding-left:14px;
+
+      }
+
+      > div:last-child {
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding-right:14px;
+      }
+
+      &:nth-child(even) {
+
+      }
+
+      &:nth-child(odd) {
+        background: #f5f5f5;
+      }
+
+      .max-keep-record-days-lable,
+      .c-enable {
+        color: #389e0d;
+      }
+
+      .max-keep-record-days-lable{
+        margin-left: 15px;
+      }
+
+      .c-disable {
+        color: #bfbfbf;
+      }
+    }
+  }
+}

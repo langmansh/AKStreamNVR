@@ -1,0 +1,53 @@
+.wave-wrapper-animate {
+  margin: 50px auto;
+  vertical-align: top;
+  text-align: center;
+  .wave-svg-wrapper {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+  }
+  .wave-svg-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    overflow: hidden;
+    animation: fillUpSvg 3s ease-in-out infinite;
+    .wave-svg {
+      width: 100%;
+      height: auto;
+      transform: translateX(-100px);
+      overflow: hidden;
+      float: left;
+      fill: #00A1DF;
+      margin: 0;
+      animation: waveSvgAnim 1s linear infinite;
+    }
+  }
+}
+
+@keyframes fillUpSvg {
+  0% {
+    transform: translateY(calc(100px/2)) scaleY(0);
+  }
+  50% {
+    transform: translateY(0) scaleY(1);
+  }
+  100% {
+    transform: translateY(calc(100px/2)) scaleY(0);
+  }
+}
+
+@keyframes waveSvgAnim {
+  0% {
+    transform: translateX(calc(-99px * 2));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

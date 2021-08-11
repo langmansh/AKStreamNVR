@@ -1,0 +1,118 @@
+
+.zpplayer-wrapping{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+
+  &.iframe-wrapping{
+    .zpplayer-header,
+    .zpplayer-bottom{
+      display: none;
+    }
+
+    .zpplayer-content{
+      padding:0 !important;
+
+      .zpplayer-video{
+        padding:0 ;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+    }
+  }
+
+
+  .zpplayer-content{
+    overflow: auto;
+    flex:1;
+    padding-top:20px;
+  }
+  .zpplayer-header {
+    background-color: #3f51b5;
+    min-height: 48px;
+    border: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    line-height: 48px;
+    text-align: center;
+    color: #fff;
+
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+  .zpplayer-bottom,
+  .zpplayer-video {
+    width: 80%;
+    margin: 0px auto;
+  }
+
+  .zpplayer-video {
+    padding-bottom: 45%;
+    position: relative;
+  }
+
+
+  .zpplayer-bottom {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 0;
+  }
+
+  .zpplayer-video-inner {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+  }
+
+
+  .zpplayer-bottom .ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab-active {
+    border-left: none !important;
+  }
+
+
+  .zpplayer-bottom-tab-pane {
+    padding: 0px 20px 20px 20px;
+
+    > div {
+      display: flex;
+      margin-bottom: 15px;
+
+      > div:first-child {
+        width: 100px;
+        text-align: right;
+        line-height: 32px;
+      }
+
+      > div:last-child {
+        flex: 1;
+      }
+    }
+  }
+
+  .zpplayer-player {
+    background-color: #000;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+
+  }
+
+
+  .grindPlayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    min-width: 400px;
+    min-height: 300px;
+    overflow: hidden;
+    background: #000;
+  }
+
+}
+
+

@@ -1,0 +1,49 @@
+
+.channel-py-list {
+
+
+  .ant-list-items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .channel-py {
+    width: 328px;
+    height: 212px;
+
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+    margin: 10px;
+    padding: 4px;
+
+    display: flex;
+    flex-direction: column;
+
+
+    > .channel-py-snap {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      cursor: pointer;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    > .channel-py-des {
+      height: 20px;
+      margin-top: 4px;
+      width: 100%;
+      padding: 0 5px;
+      font-size: 12px;
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+  }
+}
