@@ -111,7 +111,7 @@ export default function request(options) {
             _success: true,
             _message: statusText,
             _statusCode: status,
-            ...data,
+            data,
         });
     }).catch((error) => {
         const {response} = error;
