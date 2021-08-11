@@ -4,7 +4,7 @@ import moment from "moment";
 import "./Playback.less"
 import TimeSlider2 from "../../component/PlaybackTimeSlider/TimeSlider2";
 import ReactPlayer from "../../component/ReactPlayer";
-import {Calendar} from "antd";
+import {Calendar,message} from "antd";
 // import {findChannelRecordDaily, findChannelRecordMonthly} from "../../service/channel";
 import {GetHistroyRecordFileList, GetHistroyRecordFileStatus,HistroyVideo} from "../../service/channel";
 
@@ -70,36 +70,41 @@ export default class PlaybackPlay extends React.Component {
 		}).then(res => {
 			setTimeout(()=>{
 				GetHistroyRecordFileStatus(res.data).then(res => {
-				    this.setState({
-				        recordMonthly: {
-				            ...res.data.recItems,
-				            // flagArr: Array.from(res.data.taskId)
-							taskId:res.data.taskId,
-							ssrcId:Array.from(res.data.recItems)
-				        }
-				    })
-					this.setState({
-					    playSrcIdx: res.data.recItems && res.data.tatolCount > 0 ? res.data.tatolCount : null,
-					    recordDaily: {
-					        ...res.data.recItems,
-							taskId:res.data.taskId,
-					        list: res.data.recItems ? res.data.recItems.map((record, recordIndex) => {
-					    
-					            const beginTime = moment(record.startTime, "YYYY-MM-DD HH:mm:ss");
-					            const endTime = moment(record.endTime, "YYYY-MM-DD HH:mm:ss");
-					    
-					            return {
-					                ...record,
-					                beginTime: beginTime.valueOf(),
-					                endTime: endTime.valueOf(),
-					                style: {
-					                    background: "rgba(14,255,0,0.49)"
-					                },
-					                idx: recordIndex,
-					            }
-					        }):[]
-					    }
-					})
+                    if(res.data === '')
+                    {
+                        message.error('没有找到录像资源');
+                    }else{
+                        this.setState({
+                            recordMonthly: {
+                                ...res.data.recItems,
+                                // flagArr: Array.from(res.data.taskId)
+                                taskId:res.data.taskId,
+                                ssrcId:Array.from(res.data.recItems)
+                            }
+                        })
+                        this.setState({
+                            playSrcIdx: res.data.recItems && res.data.tatolCount > 0 ? res.data.tatolCount : null,
+                            recordDaily: {
+                                ...res.data.recItems,
+                                taskId:res.data.taskId,
+                                list: res.data.recItems ? res.data.recItems.map((record, recordIndex) => {
+                            
+                                    const beginTime = moment(record.startTime, "YYYY-MM-DD HH:mm:ss");
+                                    const endTime = moment(record.endTime, "YYYY-MM-DD HH:mm:ss");
+                            
+                                    return {
+                                        ...record,
+                                        beginTime: beginTime.valueOf(),
+                                        endTime: endTime.valueOf(),
+                                        style: {
+                                            background: "rgba(14,255,0,0.49)"
+                                        },
+                                        idx: recordIndex,
+                                    }
+                                }):[]
+                            }
+                        })
+                    }
 				})
 			},2000)  
 		}).then(res => {
@@ -233,7 +238,7 @@ export default class PlaybackPlay extends React.Component {
                         <Calendar fullscreen={false}
                                   value={calValue}
                                   onChange={this.handleCalendarSelect}
-                                  disabledDate={this.calDisabledDateFuc}
+                                //   disabledDate={this.calDisabledDateFuc}
                         />
                     </div>
                 </div>

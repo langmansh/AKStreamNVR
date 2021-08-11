@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\snapshots"
+    "\\public"
   ],
+  "SelectedNode": "\\public\\env-config.js",
   "PreviewInSolutionExplorer": false
 }
