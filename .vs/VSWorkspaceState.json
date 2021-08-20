@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public"
+    "\\src",
+    "\\src\\view",
+    "\\src\\view\\recordplan"
   ],
-  "SelectedNode": "\\public\\env-config.js",
+  "SelectedNode": "\\src\\view\\recordplan\\EditForm.jsx",
   "PreviewInSolutionExplorer": false
 }

@@ -65,7 +65,7 @@ export default class EditForm extends React.Component {
                     name: 'deviceId',
                     option: {
                         rules: [{
-                            required: true,
+                            required: false,
                         },]
                     },
                 },{
@@ -74,7 +74,7 @@ export default class EditForm extends React.Component {
                     name: 'channelId',
                     option: {
                         rules: [{
-                            required: true,
+                            required: false,
                         },]
                     },
                 },{
