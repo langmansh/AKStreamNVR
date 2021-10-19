@@ -121,10 +121,10 @@ export default class Device extends React.Component {
                                width: 200,
                                render: (text, record) => (
 								   <div>
-										<span>
-										{<a href="javascript:;" onClick={()=>this.editRecordPlan(record)}>编辑</a>}
-										</span>
-										&nbsp;&nbsp;&nbsp;
+										{/*<span>*/}
+										{/*{<a href="javascript:;" onClick={()=>this.editRecordPlan(record)}>编辑</a>}*/}
+										{/*</span>*/}
+										{/*&nbsp;&nbsp;&nbsp;*/}
 										<span>
 										{<a href="javascript:;" onClick={()=>this.deleteRecordPlan(record)}>删除</a>}
 										</span>

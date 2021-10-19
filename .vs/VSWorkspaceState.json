@@ -3,8 +3,8 @@
     "",
     "\\src",
     "\\src\\view",
-    "\\src\\view\\recordplan"
+    "\\src\\view\\device"
   ],
-  "SelectedNode": "\\src\\view\\recordplan\\EditForm.jsx",
+  "SelectedNode": "\\src\\view\\device\\EditForm.jsx",
   "PreviewInSolutionExplorer": false
 }

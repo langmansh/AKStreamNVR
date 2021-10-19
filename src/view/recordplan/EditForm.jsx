@@ -373,11 +373,7 @@ export default class EditForm extends React.Component {
                         },]
                     },
 					comp: <RvSwitch/>,
-                },{
-					label: '规则数据',
-					name:'timeRangeList',
-					placeholder:'该项无需填写，仅用来接收规则数据',
-				}
+                }
             ]
         }
     }
