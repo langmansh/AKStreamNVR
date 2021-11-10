@@ -19,9 +19,9 @@ export default class ServerConfigParams extends React.Component {
 
     loadServerConfigParams = () => {
         findServerConfigParams().then(res => {
-            if (res.code == 0) {
+            if (res.data.code == 0) {
                 this.setState({
-                    serverConfigParams: res.data[0]
+                    serverConfigParams: res.data.data[0]
                 })
             }
         })
@@ -29,15 +29,12 @@ export default class ServerConfigParams extends React.Component {
 
     render() {
         const {serverConfigParams} = this.state;
-        //if(!serverConfigParams){
-        //    return <Loader spinning={true}/>
-        //}
-        if (serverConfigParams == null) {
-            return <Loader spinning={true} />
+        if(!serverConfigParams){
+            return <Loader spinning={true}/>
         }
 
         const paramList= Object.entries(serverConfigParams);
-        console.log("Object.entries(serverConfigParams):", paramList)
+/*        console.log("Object.entries(serverConfigParams):", paramList)*/
 
         return (
             <div>
