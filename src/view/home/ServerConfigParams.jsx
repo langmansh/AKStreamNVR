@@ -29,8 +29,11 @@ export default class ServerConfigParams extends React.Component {
 
     render() {
         const {serverConfigParams} = this.state;
-        if(!serverConfigParams){
-            return <Loader spinning={true}/>
+        //if(!serverConfigParams){
+        //    return <Loader spinning={true}/>
+        //}
+        if (serverConfigParams == null) {
+            return <Loader spinning={true} />
         }
 
         const paramList= Object.entries(serverConfigParams);
