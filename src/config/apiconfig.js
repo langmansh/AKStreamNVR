@@ -22,6 +22,7 @@ module.exports = {
 		activeVideoChannel:`${apiAKStream}/MediaServer/ActiveVideoChannel`,
 		getVideoChannelList:`${apiAKStream}/MediaServer/GetVideoChannelList`,
 		getOnlineStreamInfoList:`${apiAKStream}/MediaServer/GetOnlineStreamInfoList`,
+		getRecordFileList:`${apiAKStream}/MediaServer/GetRecordFileList`,
 		getHistroyRecordFileList:`${apiAKStream}/SipGate/GetHistroyRecordFileList`,
 		getHistroyRecordFileStatus:`${apiAKStream}/SipGate/GetHistroyRecordFileStatus`,
 		histroyVideo:`${apiAKStream}/SipGate/HistroyVideo`,
