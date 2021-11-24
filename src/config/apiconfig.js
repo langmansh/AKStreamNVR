@@ -14,6 +14,7 @@ module.exports = {
         login: `${APIV1}/login`,
 		
         // searchChannelConfigs: `${apiAKStream}/MediaServer/GetOnlineStreamInfoList`,
+        getMediaServerList: `${apiAKStream}/MediaServer/GetMediaServerList`,
 		deleteRecordPlanByName:`${apiAKStream}/RecordPlan/DeleteRecordPlanByName`,
 		createRecordPlan:`${apiAKStream}/RecordPlan/CreateRecordPlan`,
 		getRecordPlanList:`${apiAKStream}/RecordPlan/GetRecordPlanList`,

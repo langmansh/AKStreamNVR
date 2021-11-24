@@ -2,7 +2,7 @@ import request from '../util/request';
 import apiconfig from '../config/apiconfig'
 
 
-const {searchChannelConfigs, searchChannelConfig, deleteChannelConfig, updateChannelConfig, createChannelConfig, searchChannelConfigByVas, touchChannelProxyStream,saveChannelConfig,saveChannelConfigs, queryRecordMonthly, queryRecordDaily,getOnlineStreamInfoList,getHistroyRecordFileList,getHistroyRecordFileStatus,histroyVideo,getVideoChannelList,modifyVideoChannel,activeVideoChannel,addVideoChannel,getRecordPlanList,createRecordPlan,deleteRecordPlanByName} = apiconfig.api;
+const { searchChannelConfigs, searchChannelConfig, deleteChannelConfig, updateChannelConfig, createChannelConfig, searchChannelConfigByVas, touchChannelProxyStream, saveChannelConfig, saveChannelConfigs, queryRecordMonthly, queryRecordDaily, getOnlineStreamInfoList, getHistroyRecordFileList, getHistroyRecordFileStatus, histroyVideo, getVideoChannelList, modifyVideoChannel, activeVideoChannel, addVideoChannel, getRecordPlanList, createRecordPlan, deleteRecordPlanByName, getMediaServerList} = apiconfig.api;
 
 
 export async function findChannels(params) {
@@ -92,4 +92,8 @@ export async function CreateRecordPlan(params) {
 
 export async function DeleteRecordPlanByName(name) {
     return request({url: deleteRecordPlanByName+"?name="+name,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'get', data: null,});
+}
+
+export async function GetMediaServerList(params) {
+    return request({ url: getMediaServerList, method: 'get', data: null, });
 }
