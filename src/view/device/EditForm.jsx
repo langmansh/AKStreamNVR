@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import RvForm from "../../component/RvForm/RvForm";
 
 import {BizRegex} from "../../util/globalHelp";
-import {createChannel, findChannel, modifyChannel,ActiveVideoChannel,ModifyVideoChannel,GetVideoChannelList,AddVideoChannel} from "../../service/channel";
+import { createChannel, findChannel, modifyChannel, ActiveVideoChannel, ModifyVideoChannel, GetVideoChannelList, AddVideoChannel, GetMediaServerList, GetRecordPlanList} from "../../service/channel";
 import RvSwitch from "../../component/RvSwitch/RvSwitch";
 import UrlParse from 'url-parse'
 

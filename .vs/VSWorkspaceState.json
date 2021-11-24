@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\config",
-    "\\src\\view",
-    "\\src\\view\\home"
+    "\\src\\view\\device"
   ],
-  "SelectedNode": "\\src\\view\\home\\ServerConfigParams.jsx",
+  "SelectedNode": "\\src\\view",
   "PreviewInSolutionExplorer": false
 }
