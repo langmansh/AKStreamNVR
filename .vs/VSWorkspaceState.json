@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\config",
     "\\src\\view",
-    "\\src\\view\\recordplan"
+    "\\src\\view\\home"
   ],
-  "SelectedNode": "\\src\\view\\recordplan\\EditForm.jsx",
+  "SelectedNode": "\\src\\view\\home\\ServerConfigParams.jsx",
   "PreviewInSolutionExplorer": false
 }
