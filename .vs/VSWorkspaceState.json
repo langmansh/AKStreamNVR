@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\view\\device"
+    "\\src\\view",
+    "\\src\\view\\playback"
   ],
-  "SelectedNode": "\\src\\view",
+  "SelectedNode": "\\src\\view\\playback\\Playback.jsx",
   "PreviewInSolutionExplorer": false
 }

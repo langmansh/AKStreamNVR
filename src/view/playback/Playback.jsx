@@ -69,8 +69,6 @@ export default class Playback extends React.Component {
     }
 
     render() {
-
-
         return (
             <RvPage className={"home-page"}>
                 <Table className={"playback-table"}
