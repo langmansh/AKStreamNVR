@@ -2,7 +2,7 @@ import request from '../util/request';
 import apiconfig from '../config/apiconfig'
 
 
-const { searchChannelConfigs, searchChannelConfig, deleteChannelConfig, updateChannelConfig, createChannelConfig, searchChannelConfigByVas, touchChannelProxyStream, saveChannelConfig, saveChannelConfigs, queryRecordMonthly, queryRecordDaily, getOnlineStreamInfoList, getHistroyRecordFileList, getHistroyRecordFileStatus, histroyVideo, getVideoChannelList, modifyVideoChannel, activeVideoChannel, addVideoChannel, getRecordPlanList, createRecordPlan, deleteRecordPlanByName, getMediaServerList} = apiconfig.api;
+const { searchChannelConfigs, searchChannelConfig, deleteChannelConfig, updateChannelConfig, createChannelConfig, searchChannelConfigByVas, touchChannelProxyStream, saveChannelConfig, saveChannelConfigs, queryRecordMonthly, queryRecordDaily, getOnlineStreamInfoList, getRecordFileList, getHistroyRecordFileList, getHistroyRecordFileStatus, histroyVideo, getVideoChannelList, modifyVideoChannel, activeVideoChannel, addVideoChannel, getRecordPlanList, createRecordPlan, deleteRecordPlanByName, getMediaServerList} = apiconfig.api;
 
 
 export async function findChannels(params) {
@@ -51,6 +51,10 @@ export async function requestTouchChannelProxyStream(vhost, app, stream) {
 
 export async function OnlineStreamInfoList(params) {
     return request({url: getOnlineStreamInfoList,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'post', data: params,});
+}
+
+export async function GetRecordFileList(params) {
+    return request({url: getRecordFileList,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'post', data: params,});
 }
 
 export async function GetHistroyRecordFileList(deviceId,channelId,params) {

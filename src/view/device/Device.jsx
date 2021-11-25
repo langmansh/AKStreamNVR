@@ -25,7 +25,7 @@ export default class Device extends React.Component {
     
     loadChanelsData = (params) => {
     	GetVideoChannelList({
-    	    pageIndex: this.state.page,
+    	    pageIndex: params ? params.page : this.state.page,
     	    pageSize: this.state.pageSize,
 			orderBy: [
 			    {
