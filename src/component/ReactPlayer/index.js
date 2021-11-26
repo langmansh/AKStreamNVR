@@ -830,7 +830,9 @@ var useVideoState = (function (_ref, getVideoElement) {
         el.currentTime = 0; // setEnded(false);
       }
 
-      el.play();
+      el.play().catch((e)=>{
+	console.log(e);
+      });
     }
 
     setPaused(false);
@@ -1092,7 +1094,8 @@ var useVideoFullscreen = (function (_ref, getVideoElement, getPlayerElement) {
         var videoEl = getVideoElement();
 
         if (videoEl && videoEl.play) {
-          videoEl.play();
+          videoEl.play().catch((e)=>{
+	  });
         }
       }
 
@@ -1232,7 +1235,8 @@ var useHlsjs = (function (_ref, getVideoElement) {
     if (el) {
       hlsPlayer.attachMedia(el);
       hlsPlayer.on(Hls.Events.MANIFEST_PARSED, function () {
-        return el.play();
+        return el.play().catch((e)=>{
+	});
       });
     }
 
@@ -1325,7 +1329,8 @@ var useFlvjs = (function (_ref, getVideoElement) {
     if (el) {
       flvPlayer.attachMediaElement(el);
       flvPlayer.load();
-      flvPlayer.play();
+      flvPlayer.play().catch((e)=>{
+	});
     }
 
     return function () {
@@ -1389,7 +1394,8 @@ var useNative = (function (_ref, getVideoElement) {
 
     el.src = src;
     el.load();
-    el.play();
+    el.play().catch((e)=>{
+	});
     return function () {
       el.pause();
       el.src = '';
