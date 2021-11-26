@@ -31,9 +31,9 @@ export default class EditForm extends React.Component {
         GetMediaServerList({
             ...params
         }).then(res => {
-            console.log(res.data)
+            console.log(res)
             this.setState({
-                mediaServerID: res.data.list
+                mediaServerID: [...res.data],
             })
         })
 
