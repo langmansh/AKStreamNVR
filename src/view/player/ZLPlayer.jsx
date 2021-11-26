@@ -63,12 +63,12 @@ export default class ZLPlayer extends React.Component {
         const ua = UAParser(global.navigator.userAgent);
         this.channelParams = queryString.parse(this.props.location.search);
 
-        const {vhost, app, stream, iframe=false} = this.channelParams;
+        const {mediaServerIp, vhost, app, stream, iframe=false} = this.channelParams;
 		const urldata = {
 			play_addrs:{
-				flv:`${apiDomin}/`+app+'/'+stream+'.flv',
-				hls:`${apiDomin}/`+app+'/'+stream+'/hls.m3u8',
-				rtmp:`${apiDomin}/`+app+'/'+stream,
+				flv:`http://${mediaServerIp}/`+app+'/'+stream+'.flv',
+				hls:`http://${mediaServerIp}/`+app+'/'+stream+'/hls.m3u8',
+				rtmp:`http://${mediaServerIp}/`+app+'/'+stream,
 			}
 		}
 		

@@ -99,5 +99,5 @@ export async function DeleteRecordPlanByName(name) {
 }
 
 export async function GetMediaServerList(params) {
-    return request({ url: getMediaServerList, config: { headers: { "AccessKey": apiconfig.AccessKey } }, method: 'get', data: null, });
+    return request({ url: getMediaServerList, config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'get', data: null, });
 }
