@@ -15,10 +15,7 @@ export default class EditForm extends React.Component {
     constructor(props) {
         super(props);
         const { Option } = Select;
-        const optChilds = [
-            <Option key='1' value="edward">edward</Option>
 
-        ];
         this.state = {
             loading: false,
             chlist: [],
@@ -34,8 +31,9 @@ export default class EditForm extends React.Component {
         GetMediaServerList({
             ...params
         }).then(res => {
+            console.log(res)
             this.setState({
-                mediaServerID: res.data
+                mediaServerID: [...res.data],
             })
         })
 
@@ -147,7 +145,7 @@ export default class EditForm extends React.Component {
                     },]
                 },
                 comp: (
-                    <Select className="create-form-select" placeholder="请选择流媒体服务器">
+                    <Select>
                         {mediaServerID.map(item => <Select.Option key={item.mediaServerId} value={item.mediaServerId}>{item.mediaServerId}</Select.Option>)}
                     </Select>
                 )
@@ -219,7 +217,7 @@ export default class EditForm extends React.Component {
                     },]
                 },
                 comp: (
-                    <Select className="create-form-select" placeholder="请选择录像计划模板">
+                    <Select>
                         {chlist.map(item => <Select.Option key={item.name} value={item.name}>{item.name}</Select.Option>)}
                     </Select>
                 ),
