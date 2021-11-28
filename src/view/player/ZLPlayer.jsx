@@ -172,14 +172,16 @@ export default class ZLPlayer extends React.Component {
         }else if (type == "rtmp") {
             this.setState({
                 isLive:true,
-                currentUrl: channelData.play_addrs.rtmp,
-            })
-        }else if (type == "rtsp") {
-            this.setState({
-                isLive:true,
-                currentUrl: channelData.play_addrs.rtsp,
+                currentUrl: channelData.play_addrs.rtmp.replace('http','rtmp'),
             })
         }
+        // else if (type == "rtsp") {
+        //     console.log(channelData.play_addrs.rtsp.replace('http','rtsp'))
+        //     this.setState({
+        //         isLive:true,
+        //         currentUrl: channelData.play_addrs.rtsp.replace('http','rtsp'),
+        //     })
+        // }
         
     }
 
@@ -277,15 +279,29 @@ export default class ZLPlayer extends React.Component {
                 <div className={"zpplayer-content"}>
                
                     <div className={"zpplayer-video"}>
-
-                        <live-player 
+                        <easy-player
+                            id="player"
+                            // video-url  undefined 容易白屏 设置为 ''
+                            video-url={this.state.currentUrl || ''}
+                            video-title="AKStreamNVR"
+                            fluent="true" // 流畅模式
+                            stretch // 是否拉伸
+                            muted="true" // 是否静音
+                            hide-big-play-button
+                            live={this.state.isLive}
+                            auto-play
+                            controls
+                            // current-time={currentTime}
+                            // aspect="fullscreen" // 长比高的值过大 可能导致样式布局变化  不随外层div大小
+                        ></easy-player>
+                        {/* <live-player 
                             id="AKPlayer"
                             video-url={this.state.currentUrl}  // 视频url
                             fluent = 'true' // 流畅模式
                             live={this.state.isLive} // 是否直播, 标识要不要显示进度条
                             stretch='true' // 是否拉伸
                             controls={true}> 
-                        </live-player>
+                        </live-player> */}
                         {/* {'hlsjs' === playinfo.kernel && (
                             <ReactPlayer ref={(reactPlayer) => this.reactPlayer = reactPlayer} className={"zpplayer-player"} {...playinfo} {...playBaseProps} autoplay/>
                         )}
@@ -307,7 +323,7 @@ export default class ZLPlayer extends React.Component {
                                       }}>
                                           <Radio.Button value="flv">FLV</Radio.Button>
                                           <Radio.Button value="rtmp">RTMP</Radio.Button>
-                                          <Radio.Button value="rtsp">RTSP</Radio.Button>
+                                          {/* <Radio.Button value="rtsp">RTSP</Radio.Button> */}
                                           {/* <Tooltip title={!channelData.play_addrs.hls ? "当前通道未开启HLS直播" : null}>
                                               <Radio.Button value="hlsjs" disabled={!channelData.play_addrs.hls}>HLS</Radio.Button>
                                           </Tooltip> */}
