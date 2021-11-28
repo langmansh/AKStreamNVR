@@ -33,8 +33,6 @@ export default class ZLPlayer extends React.Component {
                 mainId:stream,
             },
             dataTotal: 0,
-            // page: 1,
-            // pageSize: 10,
             iframe: false,
             channelData: null,
             currentUrl:'',
@@ -84,10 +82,10 @@ export default class ZLPlayer extends React.Component {
         const {mediaServerIp, vhost, app, stream, iframe=false} = this.channelParams;
 		const urldata = {
 			play_addrs:{
-				flv:`http://${mediaServerIp}/`+app+'/'+stream+'.flv',
-				hls:`http://${mediaServerIp}/`+app+'/'+stream+'/hls.m3u8',
-				rtmp:`rtmp://${mediaServerIp}/`+app+'/'+stream,
-                rtsp:`rtsp://${mediaServerIp}/`+app+'/'+stream,
+				flv:`${apiDomin}/`+app+'/'+stream+'.flv',
+				hls:`${apiDomin}/`+app+'/'+stream+'/hls.m3u8',
+				rtmp:`${apiDomin}/`+app+'/'+stream,
+                rtsp:`${apiDomin}/`+app+'/'+stream,
 			}
 		}
 		
@@ -335,7 +333,7 @@ export default class ZLPlayer extends React.Component {
                                     </div>
                                     <div>
                                         <div>rtsp：</div>
-                                        <div><Input value={channelData.play_addrs.rtsp} addonAfter={<Icon type="copy"/>}/></div>
+                                        <div><Input value={channelData.play_addrs.rtsp.replace('http','rtsp')} addonAfter={<Icon type="copy"/>}/></div>
                                     </div>
                                     <div>
                                         <div>rtmp：</div>
