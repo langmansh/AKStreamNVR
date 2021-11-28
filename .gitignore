@@ -22,10 +22,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /.idea
-public/env-config.js
 .vs/ProjectSettings.json
 .vs/slnx.sqlite
 .vs/VSWorkspaceState.json
 .vs/AKStreamNVR/config/applicationhost.config
 .vs/AKStreamNVR/v16/.suo
 debug.log
+public/env-config.js

@@ -49,7 +49,8 @@
     "shallow-utils": "~1.0.2",
     "tree-model": "~1.0.7",
     "ua-parser-js": "~0.7.20",
-    "url-parse": "~1.4.7"
+    "url-parse": "~1.4.7",
+    "video.js": "^7.17.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "~7.5.0",
