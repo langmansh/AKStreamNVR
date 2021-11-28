@@ -69,6 +69,7 @@ export default class ZLPlayer extends React.Component {
 				flv:`http://${mediaServerIp}/`+app+'/'+stream+'.flv',
 				hls:`http://${mediaServerIp}/`+app+'/'+stream+'/hls.m3u8',
 				rtmp:`http://${mediaServerIp}/`+app+'/'+stream,
+                rtsp:`rtsp://${mediaServerIp}/`+app+'/'+stream,
 			}
 		}
 		
