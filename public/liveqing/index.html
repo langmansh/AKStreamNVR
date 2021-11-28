@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>liveplayer</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+</head>
+
+<body style="margin:0">
+    <!--多清晰度播放示例-->
+    <!-- <live-player video-url="http://192.168.1.11:10080/fvod/GTUGsiqig/video.m3u8"  show-custom-button="true" autoplay="true" aspect="16:9"  resolution="yh,fhd,hd,sd" resolutiondefault="fhd"></live-player> -->
+    <!--HTTP-FLV直播播放示例-->
+    <live-player video-url="http://nvr.bsguaji.cn:10049/rtp/1D42856D.flv" live="true"></live-player>
+    <!--RTMP播放示例-->
+    <!-- <live-player video-url="rtmp://192.168.1.11:10085/vlive/_9VKyi3mg" live="true" aspect="fullscreen"></live-player> -->
+    <!--M3U8播放示例-->
+    <!-- <live-player video-url="http://192.168.1.11:10080/vhls/_9VKyi3mg/_9VKyi3mg_live.m3u8" live="true" aspect="16:9"></live-player> -->
+    <!--mp4播放示例-->
+    <!-- <live-player video-url="http://192.168.1.11:10080/vod/download/mwoDv_iWR" muted="true" aspect="16:9"></live-player> -->
+
+    <!-- <live-player id="player01" video-url="http://192.168.2.135:10080/vhls/0XpHAMvWR/0XpHAMvWR_live.m3u8" live="true"  aspect="16:9" stretch="true">
+            <div style="position:absolute;left:15px;top:15px;color:#FFF;">自定义叠加层</div>
+        </live-player> -->
+
+    <!-- <live-player video-url="http://192.168.2.135:10080/flv/hls/ZJ9rizvZg.flv" live="true"  aspect="16:9" stretch="true"></live-player> -->
+
+    <script>
+        window.onload = function () {
+            // 页面加载完成以后执行
+            //--------------------JavaScript 交互示例, 当前示例页面放置到web容器里通过http请求访问页面--------------------
+            // var player = document.getElementById('player01');
+            // var videoUrlBak = "";
+            // document.addEventListener("visibilitychange", () => {
+            //     if (document.visibilityState === 'visible') {
+            //         if(videoUrlBak) {
+            //             console.log("标签页恢复可见, 继续播放...");
+            //             player.setAttribute("video-url", videoUrlBak);
+            //         }
+            //     } else {
+            //         console.log("标签页不可见, 停止播放...");
+            //         videoUrlBak = player.getAttribute("video-url");
+            //         player.setAttribute("video-url", "");
+            //     }
+            // });
+            // player.addEventListener('snapOutside', function(evt) {
+            //     console.log('获取快照 base64 数据', evt.detail[0]);
+            // });
+            // player.addEventListener('customButtons', function(evt) {
+            //     console.log('自定义按钮点击回调 按钮名称', evt.detail[0])
+            // });
+            // player.addEventListener('fullscreen', function(evt) {
+            //     console.log('fullscreen', evt.detail[0]);
+            // });
+            // setTimeout(function() {
+            //     console.log("快照, 回调 snapOutside...");
+            //     player.getVueInstance().snap();
+            //     console.log("静音...");
+            //     player.getVueInstance().setMuted(true);
+            //     console.log("静音状态: " + player.getVueInstance().getMuted());
+            //     console.log("暂停...");
+            //     player.getVueInstance().pause();
+            //     console.log("暂停状态: " + player.getVueInstance().paused());
+            //     console.log("全屏状态: " + player.getVueInstance().isFullscreen());
+            //     //触发全屏, 需要放置到交互事件回调中
+            //     //btn.onclick = () => { player.getVueInstance().requestFullscreen(); }
+            //     player.getVueInstance().setMuted(false);
+            //     console.log("音量: " + player.getVueInstance().getVolume());
+            //     player.getVueInstance().setVolume(0.5);
+            //     console.log("音量1: " + player.getVueInstance().getVolume());
+            //     player.getVueInstance().setVolume(0.3);
+            //     console.log("音量2: " + player.getVueInstance().getVolume());
+            // }, 3000);
+            // setTimeout(function() {
+            //     console.log("放音...");
+            //     player.getVueInstance().setMuted(false);
+            //     console.log("静音状态: " + player.getVueInstance().getMuted());
+            //     console.log("播放...");
+            //     player.getVueInstance().play();
+            //     console.log("暂停状态: " + player.getVueInstance().paused());
+            // }, 6000);
+            // setTimeout(function() {
+            //     console.log("切换媒体源...");
+            //     player.setAttribute("video-url", "rtmp://live.hkstv.hk.lxdns.com/live/hks2");
+            // }, 9000);
+
+            //--------------------常见问题--------------------
+            //1、提示： TypeError: The element or ID supplied is not valid. (videojs)
+            //检查 video-url 设置的播放地址 是否有效（可以用 VLC 播放尝试）
+
+            //2、提示：Access to XMLHttpRequest at ... from origin .... has been blocked by CORS policy
+            //检查 video-url 设置的播放地址 是否允许跨域访问
+
+            //3、设置为 aspect='fullscreen'时，父级元素加上 position: relative
+        }
+    </script>
+<script src="liveplayer-element.min.js"></script></body>
+
+</html>
