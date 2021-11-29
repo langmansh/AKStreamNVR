@@ -14,6 +14,10 @@ module.exports = {
         login: `${APIV1}/login`,
 		
         // searchChannelConfigs: `${apiAKStream}/MediaServer/GetOnlineStreamInfoList`,
+        restartMediaServer:`${apiAKStream}/AKStreamKeeper/RestartMediaServer`,
+        stopMediaServer:`${apiAKStream}/AKStreamKeeper/ShutdownMediaServer`,
+        startMediaServer:`${apiAKStream}/AKStreamKeeper/StartMediaServer`,
+        deleteRecordFile:`${apiAKStream}/MediaServer/DeleteRecordFile`,
         stopRecord:`${apiAKStream}/MediaServer/StopRecord`,
         startRecord:`${apiAKStream}/MediaServer/StartRecord`,
         streamStop:`${apiAKStream}/MediaServer/StreamStop`,

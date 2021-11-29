@@ -1,9 +1,9 @@
 import React from 'react';
 import "./ZLPlayer.less"
-import {findChannelByVas,GetRecordFileList} from "../../service/channel";
+import {findChannelByVas,GetRecordFileList,DeleteRecordFile} from "../../service/channel";
 import queryString from 'query-string';
 import Loader from "../../component/Loader";
-import {Icon, Input, Radio, Tabs, Tooltip,Table, Divider,Pagination} from "antd";
+import {Icon,message, Input, Radio, Tabs, Tooltip,Table, Divider,Pagination} from "antd";
 import ReactPlayer from '../../component/ReactPlayer';
 import hlsjs from 'hls.js';
 import flvjs from 'flv.js';
@@ -31,6 +31,7 @@ export default class ZLPlayer extends React.Component {
                 pageIndex:1,
                 pageSize:2,
                 mainId:stream,
+                deleted:false,
             },
             dataTotal: 0,
             iframe: false,
@@ -123,7 +124,6 @@ export default class ZLPlayer extends React.Component {
     }
 
     loadData = (params) => {
-        console.log(params)
     	GetRecordFileList({
     	    pageIndex: params ? params.pageIndex : this.state.recordparams.pageIndex,
     	    pageSize: this.state.pageSize,
@@ -134,6 +134,7 @@ export default class ZLPlayer extends React.Component {
 			    }
 			],
             mainId:this.state.recordparams.mainId,
+            deleted:false,
     	    // active: 1,
     	    ...params
     	}).then(res => {
@@ -160,6 +161,20 @@ export default class ZLPlayer extends React.Component {
 				message.success('推流成功!');
 			}
         })
+    }
+
+    deleteRecordFile = (dbId) => {
+    	DeleteRecordFile(dbId).then(res => {
+    	    if(res._success && res._statusCode === 200 && res.data)
+			{
+				message.success('删除录像文件成功!');
+                this.loadData(this.state.recordparams)
+			}
+            else
+            {
+                message.error('删除录像文件失败!');
+            }
+    	})
     }
 
     changePlay = (type) => {
@@ -263,6 +278,10 @@ export default class ZLPlayer extends React.Component {
                     <Divider type="vertical" />
                     {
                         <a href={record.downloadUrl}  >下载</a>
+                    }
+                    <Divider type="vertical" />
+                    {
+                        <a href="javascript:;" onClick={()=>this.deleteRecordFile(record.id)}>删除</a>
                     }
                 </span>
                ),

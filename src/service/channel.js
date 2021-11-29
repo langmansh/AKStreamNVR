@@ -2,7 +2,7 @@ import request from '../util/request';
 import apiconfig from '../config/apiconfig'
 
 
-const { searchChannelConfigs, searchChannelConfig, deleteChannelConfig, updateChannelConfig, createChannelConfig, searchChannelConfigByVas, touchChannelProxyStream, saveChannelConfig, saveChannelConfigs, queryRecordMonthly, queryRecordDaily, getOnlineStreamInfoList, getRecordFileList, getHistroyRecordFileList, getHistroyRecordFileStatus, histroyVideo, getVideoChannelList, modifyVideoChannel, activeVideoChannel, addVideoChannel, getRecordPlanList, createRecordPlan, deleteRecordPlanByName, getMediaServerList,streamLive,streamStop,startRecord,stopRecord} = apiconfig.api;
+const { searchChannelConfigs, searchChannelConfig, deleteChannelConfig, updateChannelConfig, createChannelConfig, searchChannelConfigByVas, touchChannelProxyStream, saveChannelConfig, saveChannelConfigs, queryRecordMonthly, queryRecordDaily, getOnlineStreamInfoList, getRecordFileList, getHistroyRecordFileList, getHistroyRecordFileStatus, histroyVideo, getVideoChannelList, modifyVideoChannel, activeVideoChannel, addVideoChannel, getRecordPlanList, createRecordPlan, deleteRecordPlanByName, getMediaServerList,streamLive,streamStop,startRecord,stopRecord,deleteRecordFile,startMediaServer,stopMediaServer,restartMediaServer} = apiconfig.api;
 
 
 export async function findChannels(params) {
@@ -116,4 +116,20 @@ export async function StartRecord(mediaServerId,mainId) {
 
 export async function StopRecord(mediaServerId,mainId) {
     return request({url: stopRecord+"?mediaServerId="+mediaServerId+"&mainId="+mainId,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'get', data: null,});
+}
+
+export async function DeleteRecordFile(dbId) {
+    return request({url: deleteRecordFile+"?dbId="+dbId,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'get', data: null,});
+}
+
+export async function StartMediaServer(mediaServerId) {
+    return request({url: startMediaServer+"?mediaServerId="+mediaServerId,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'get', data: null,});
+}
+
+export async function StopMediaServer(mediaServerId) {
+    return request({url: stopMediaServer+"?mediaServerId="+mediaServerId,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'get', data: null,});
+}
+
+export async function RestartMediaServer(mediaServerId) {
+    return request({url: restartMediaServer+"?mediaServerId="+mediaServerId,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'get', data: null,});
 }

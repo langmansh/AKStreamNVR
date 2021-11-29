@@ -8,6 +8,7 @@ import ThreadDelayCharts from "./ThreadDelayCharts";
 import ReactTimeout from "react-timeout";
 import {findThreadsLoad, restartZlmediaServer} from "../../service/global";
 import ServerTcpSessions from "./ServerTcpSessions";
+import MediaServer from "./MediaServer";
 import ServerConfigParams from "./ServerConfigParams";
 import RvDrawer from "../../component/RvDrawer/RvDrawer"
 
@@ -74,7 +75,7 @@ export default class Home extends React.Component {
         return (
             <RvPage className={"home-page"} headerTools={
                 <div>
-                    <Button icon={"reload"} type="danger" ghost onClick={() => {
+                    {/* <Button icon={"reload"} type="danger" ghost onClick={() => {
                         const config = {
                             title: '提示!',
                             content: "您确定要重启流媒体服务吗",
@@ -92,7 +93,7 @@ export default class Home extends React.Component {
                             }
                         };
                         return Modal.confirm(config);
-                    }}>重启服务</Button>
+                    }}>重启服务</Button> */}
 
                     <Button icon={"setting"} type="primary" ghost onClick={() => {
                         RvDrawer.open({
@@ -112,6 +113,16 @@ export default class Home extends React.Component {
                     <Col span={12} style={{marginBottom: 10}}>
                         <Card className={"dashboard-card"} title="线程任务执行延时(ms)" bodyStyle={{padding: "20px"}}>
                             <ThreadDelayCharts chartData={this.state.chartsData}/>
+                        </Card>
+                    </Col>
+
+                    <Col span={24} style={{marginBottom: 10}}>
+                        <Card className={"dashboard-card"} title="流媒体服务" bodyStyle={{padding: "0px"}} extra={
+                            <div>
+                                <Button icon={"reload"} onClick={()=>this.mediaServer.loadMediaServerData()}></Button>
+                            </div>
+                        }>
+                            <MediaServer ref={(comp) => this.mediaServer = comp}/>
                         </Card>
                     </Col>
 

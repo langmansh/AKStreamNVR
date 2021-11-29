@@ -23,9 +23,10 @@ export default class ServerTcpSessions extends React.Component {
             serverTcpSessionsLoading: true,
         }, () => {
             findServerAllSession().then((res) => {
-                if (res.code == 0) {
+                console.log(res.data.code)
+                if (res.data.code == 0) {
                     this.setState({
-                        serverTcpSessions: res.data,
+                        serverTcpSessions: res.data.data,
                         serverTcpSessionsLoading: false
                     })
                 }
