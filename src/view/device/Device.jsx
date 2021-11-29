@@ -6,6 +6,7 @@ import RvPage from "../../component/RvPage/RvPage";
 import EditForm from "./EditForm";
 import RvModal from "../../component/RvModal/RvModal";
 import { elementType } from 'prop-types';
+import PlayForm from './PlayForm';
 
 export default class Device extends React.Component {
 
@@ -65,12 +66,18 @@ export default class Device extends React.Component {
 	}
 
 	getStreamLive = (channel) => {
-        StreamLive(channel.mediaServerId,channel.mainId).then(res => {
-			if(res._success && res._statusCode === 200 && res.data)
-			{
-				message.success('推流成功!');
-			}
-        })
+        // StreamLive(channel.mediaServerId,channel.mainId).then(res => {
+		// 	if(res._success && res._statusCode === 200 && res.data)
+		// 	{
+		// 		message.success('推流成功!');
+		// 	}
+        // })
+		RvModal.open({
+			width: 1120,
+			title: `实时视频: ${channel.channelName}`,
+			footer: null,
+			onCancel: (args) => null,
+		}, <PlayForm channel={channel}/>)
     }
 
 	getStreamStop = (channel) => {
@@ -213,7 +220,7 @@ export default class Device extends React.Component {
 									   }	
 									   <Divider type="vertical" />
 									   {
-										   record.mediaServerId && record.mediaServerId.indexOf('unknown_server') ? <a href="javascript:;" onClick={()=>this.getStreamLive(record)}>推流</a> : ""
+										   record.mediaServerId && record.mediaServerId.indexOf('unknown_server') ? <a href="javascript:;" onClick={()=>this.getStreamLive(record)}>播放</a> : ""
 									   }
 									   <Divider type="vertical" />
 									   {
