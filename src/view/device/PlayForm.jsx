@@ -47,7 +47,7 @@ export default class PlayForm extends React.Component {
                 <div className={"playback-play-header"}>
                     <div className={"playback-player"}>
                         {
-                          <live-player 
+                          <easy-player 
                             video-title='AKStream'
                             video-url={this.state.playUrl.flv}  // 视频url
                             fluent = 'true' // 流畅模式
@@ -56,7 +56,7 @@ export default class PlayForm extends React.Component {
                             muted='true'
                             autoplay='true'
                             controls={true}> 
-                          </live-player> 
+                          </easy-player> 
                         }
 
                     </div>
