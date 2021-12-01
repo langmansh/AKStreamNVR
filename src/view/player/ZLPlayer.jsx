@@ -233,7 +233,7 @@ export default class ZLPlayer extends React.Component {
 
     render() {
         let player = new WasmPlayer(null, 'video', this.callbackfun,{
-            muted:true,stretch:true,fluent:true,
+            muted:true,stretch:true,fluent:true,isLive:this.state.isLive
         })
         player.play(this.state.currentUrl, 1)
 
