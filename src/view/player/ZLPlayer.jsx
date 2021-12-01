@@ -104,20 +104,6 @@ export default class ZLPlayer extends React.Component {
 			this.setState({
 			    loading: false,
 			})
-
-            // findChannelByVas(vhost, app, stream)
-            //     .then(res => {
-            //         this.setState({
-            //             channelData: res.data,
-            //             params: this.channelParams,
-            //         }, () => {
-            //             this.changePlayType("flvjs")
-            //         })
-            //     }).finally(() => {
-            //     this.setState({
-            //         loading: false,
-            //     })
-            // })
         })
 
         this.loadData(this.state.recordparams)
@@ -246,6 +232,11 @@ export default class ZLPlayer extends React.Component {
 
 
     render() {
+        let player = new WasmPlayer(null, 'video', this.callbackfun,{
+            muted:true,stretch:true,fluent:true,
+        })
+        player.play(this.state.currentUrl, 1)
+
         const {channelData, params, playinfo, playBaseProps} = this.state;
         if (!this.state.channelData || !playinfo) {
             return <Loader spinning={true}/>
@@ -288,8 +279,9 @@ export default class ZLPlayer extends React.Component {
             },
           ];
           
-
+        
         return (
+            
             <div className={classNames("zpplayer-wrapping",{"iframe-wrapping":this.state.iframe})}>
                 <div className={"zpplayer-header"}>
                     {channelData.name}
@@ -298,7 +290,8 @@ export default class ZLPlayer extends React.Component {
                 <div className={"zpplayer-content"}>
                
                     <div className={"zpplayer-video"}>
-                        <easy-player
+                        <div id="video"></div>
+                        {/* <easy-player
                             id="player"
                             // video-url  undefined 容易白屏 设置为 ''
                             video-url={this.state.currentUrl || ''}
@@ -312,7 +305,7 @@ export default class ZLPlayer extends React.Component {
                             controls
                             // current-time={currentTime}
                             // aspect="fullscreen" // 长比高的值过大 可能导致样式布局变化  不随外层div大小
-                        ></easy-player>
+                        ></easy-player> */}
                         {/* <live-player 
                             id="AKPlayer"
                             video-url={this.state.currentUrl}  // 视频url
@@ -321,15 +314,6 @@ export default class ZLPlayer extends React.Component {
                             stretch='true' // 是否拉伸
                             controls={true}> 
                         </live-player> */}
-                        {/* {'hlsjs' === playinfo.kernel && (
-                            <ReactPlayer ref={(reactPlayer) => this.reactPlayer = reactPlayer} className={"zpplayer-player"} {...playinfo} {...playBaseProps} autoplay/>
-                        )}
-                        {'flvjs' === playinfo.kernel && (
-                            <ReactPlayer ref={(reactPlayer) => this.reactPlayer = reactPlayer} className={"zpplayer-player"} {...playinfo} {...playBaseProps} autoplay/>
-                        )}
-                        {'flash' === playinfo.kernel && (
-                            <ReactPlayer.GrindPlayer ref={(reactPlayer) => this.reactPlayer = reactPlayer} {...playinfo} grindPlayerSwf={grindPlayerSwf} flashlsOSMFSwf={flashlsOSMFSwf}/>
-                        )} */}
 
                     </div>
                     <div className={"zpplayer-bottom"}>

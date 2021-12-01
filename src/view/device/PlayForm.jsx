@@ -41,24 +41,16 @@ export default class PlayForm extends React.Component {
 
 
     render() {
+        let player = new WasmPlayer(null, 'video', this.callbackfun,{
+            Height:true
+        })
+        player.play(this.state.playUrl.flv, 1)
         return (
             <div className={"playback-play-container"}>
 
                 <div className={"playback-play-header"}>
                     <div className={"playback-player"}>
-                        {
-                          <easy-player 
-                            video-title='AKStream'
-                            video-url={this.state.playUrl.flv}  // 视频url
-                            fluent = 'true' // 流畅模式
-                            live='true' // 是否直播, 标识要不要显示进度条
-                            stretch='true' // 是否拉伸
-                            muted='true'
-                            autoplay='true'
-                            controls={true}> 
-                          </easy-player> 
-                        }
-
+                        <div id='video'></div>
                     </div>
                     <div className={"playback-calendar"}>
                         <Tabs>
