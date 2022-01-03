@@ -10,7 +10,7 @@
 如果对您有帮助，点击右上角⭐Star⭐关注 ，感谢支持开源！
 ```
 ### 在线Demo演示
-演示地址：http://nvr.bsguaji.cn:10059/
+演示地址：http://akstream.govfun.com:10059/
 
 ### 快速启动
 
