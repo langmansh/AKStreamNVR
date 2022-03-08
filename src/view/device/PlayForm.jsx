@@ -29,7 +29,7 @@ export default class PlayForm extends React.Component {
 			{
 				this.setState({
                     playUrl:{
-                        flv:`${apiDomin}/`+channel.app+'/'+channel.mainId+'.flv',
+                        flv:`${apiDomin}/`+channel.app+'/'+channel.mainId+'.live.flv',
                         hls:`${apiDomin}/`+channel.app+'/'+channel.mainId+'/hls.m3u8',
                         rtmp:`${apiDomin}/`+channel.app+'/'+channel.mainId,
                         rtsp:`${apiDomin}/`+channel.app+'/'+channel.mainId,
