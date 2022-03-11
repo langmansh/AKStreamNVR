@@ -70,11 +70,11 @@ export default class PlayForm extends React.Component {
                                     </div>
                                     <div>
                                         <div>rtsp：</div>
-                                        <div><Input value={this.state.playUrl.rtsp.replace("http","rtsp")} addonAfter={<Icon type="copy"/>}/></div>
+                                        <div><Input value={this.state.playUrl.rtsp.replace('http','rtsp')} addonAfter={<Icon type="copy"/>}/></div>
                                     </div>
                                     <div>
                                         <div>rtmp：</div>
-                                        <div><Input value={this.state.playUrl.rtmp.replace("http","rtmp")} addonAfter={<Icon type="copy"/>}/></div>
+                                        <div><Input value={this.state.playUrl.rtmp.replace('http','rtmp')} addonAfter={<Icon type="copy"/>}/></div>
                                     </div>
                                     <div>
                                         <div>hls：</div>
