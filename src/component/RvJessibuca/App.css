@@ -1,0 +1,121 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.root {
+  display: flex;
+  /* place-content: center;
+  margin-top: 3rem; */
+}
+
+.container-shell {
+  backdrop-filter: blur(5px);
+  background: hsla(0, 0%, 50%, 0.5);
+  padding: 30px 4px 10px 4px;
+  /* border: 2px solid black; */
+  width: 100%;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px;
+}
+
+.container-shell:before {
+  content: "AKStream player";
+  position: absolute;
+  color: rgb(60, 59, 61);
+  top: 4px;
+  left: 10px;
+  text-shadow: 0px 0px black;
+}
+
+#container {
+  background: rgba(13, 14, 27, 0.7);
+  width: 100%;
+  height: 398px;
+}
+
+.input {
+  display: flex;
+  margin-top: 10px;
+  color: white;
+  place-content: stretch;
+}
+
+.input2 {
+  bottom: 0px;
+}
+
+.input input {
+  flex: auto;
+}
+
+.err {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  color: red;
+}
+
+.option {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  display: flex;
+  place-content: center;
+  font-size: 12px;
+}
+
+.option span {
+  color: white;
+}
+
+.page {
+  /* background: url('./bg.jpg'); */
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+@media (max-width: 720px) {
+  #container {
+    width: 90vw;
+    height: 52.7vw;
+  }
+}
+
+
+

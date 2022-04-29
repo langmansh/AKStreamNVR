@@ -76,7 +76,7 @@ export default class Device extends React.Component {
 			width: 1120,
 			title: `实时视频: ${channel.channelName}`,
 			footer: null,
-			onCancel: (args) => null,
+			onCancel: (args) => args.refresh && this.loadChanelsData(),
 		}, <PlayForm channel={channel}/>)
     }
 

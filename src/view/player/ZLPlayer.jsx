@@ -5,15 +5,11 @@ import queryString from 'query-string';
 import Loader from "../../component/Loader";
 import {Icon,message, Input, Radio, Tabs, Tooltip,Table, Divider,Pagination} from "antd";
 import ReactPlayer from '../../component/ReactPlayer';
-import hlsjs from 'hls.js';
-import flvjs from 'flv.js';
-import grindPlayerSwf from '../../component/ReactPlayer/GrindPlayer.swf';
-import flashlsOSMFSwf from '../../component/ReactPlayer/flashlsOSMF.swf';
 import UAParser from 'ua-parser-js';
 import ReactTimeout from "react-timeout";
 import classNames from "classnames";
 import {apiDomin} from "../../config/apiconfig";
-
+import AKStreamPlayer from '../../component/RvJessibuca/App.js';
 
 
 @ReactTimeout
@@ -232,10 +228,10 @@ export default class ZLPlayer extends React.Component {
 
 
     render() {
-        let player = new WasmPlayer(null, 'video', this.callbackfun,{
-            muted:true,stretch:true,fluent:true,isLive:this.state.isLive
-        })
-        player.play(this.state.currentUrl, 1)
+        // let player = new WasmPlayer(null, 'video', this.callbackfun,{
+        //     muted:true,stretch:true,fluent:true,isLive:this.state.isLive
+        // })
+        // player.play(this.state.currentUrl, 1)
 
         const {channelData, params, playinfo, playBaseProps} = this.state;
         if (!this.state.channelData || !playinfo) {
@@ -290,7 +286,11 @@ export default class ZLPlayer extends React.Component {
                 <div className={"zpplayer-content"}>
                
                     <div className={"zpplayer-video"}>
-                        <div id="video"></div>
+                        <AKStreamPlayer 
+                            playUrl={this.state.currentUrl}
+                            hasAudio={false}
+                        />
+                        {/* <div id="video"></div> */}
                         {/* <easy-player
                             id="player"
                             // video-url  undefined 容易白屏 设置为 ''

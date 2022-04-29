@@ -1,16 +1,20 @@
 import React from 'react';
 import "./PlayForm.less"
-import {message,Input,Tabs,Icon} from "antd";
+import {Input,Tabs,Icon} from "antd";
 import {StreamLive} from "../../service/channel";
 import {apiDomin} from "../../config/apiconfig";
+import AKStreamPlayer from '../../component/RvJessibuca/App.js';
 
 export default class PlayForm extends React.Component {
 
     constructor(props) {
         super(props);
 
+        const {channel} = this.props;
+        
         this.state = {
-            playUrl:{}
+            playUrl:{},
+            channel:channel
         }
 
     }
@@ -21,18 +25,17 @@ export default class PlayForm extends React.Component {
     }
 
 
-
     loadChannel = (params) => {
-        const {channel} = this.props;
-        StreamLive(channel.mediaServerId,channel.mainId).then(res => {
+        // const {channel} = this.props;
+        StreamLive(this.state.channel.mediaServerId,this.state.channel.mainId).then(res => {
 			if(res._success && res._statusCode === 200 && res.data)
 			{
 				this.setState({
                     playUrl:{
-                        flv:`${apiDomin}/`+channel.app+'/'+channel.mainId+'.live.flv',
-                        hls:`${apiDomin}/`+channel.app+'/'+channel.mainId+'/hls.m3u8',
-                        rtmp:`${apiDomin}/`+channel.app+'/'+channel.mainId,
-                        rtsp:`${apiDomin}/`+channel.app+'/'+channel.mainId,
+                        flv:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId+'.live.flv',
+                        hls:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId+'/hls.m3u8',
+                        rtmp:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId,
+                        rtsp:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId,
                     }
                 })
 			}
@@ -41,16 +44,24 @@ export default class PlayForm extends React.Component {
 
 
     render() {
-        let player = new WasmPlayer(null, 'video', this.callbackfun,{
-            Height:true
-        })
-        player.play(this.state.playUrl.flv, 1)
+        // let player = new WasmPlayer(null, 'video', this.callbackfun,{
+        //     Height:true
+        // })
+        // player.play(this.state.playUrl.flv, 1)
+        // let pUrl = "http://221.10.33.44:18000/rtp/15FF0A94.live.flv"
+        
+
+    
         return (
             <div className={"playback-play-container"}>
 
                 <div className={"playback-play-header"}>
                     <div className={"playback-player"}>
-                        <div id='video'></div>
+                        {/* <div id='video'></div> */}
+                        <AKStreamPlayer 
+                            playUrl={this.state.playUrl.flv == undefined ? `${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId+'.live.flv':this.state.playUrl.flv}
+                            hasAudio={false}
+                        />
                     </div>
                     <div className={"playback-calendar"}>
                         <Tabs>
@@ -97,8 +108,8 @@ export default class PlayForm extends React.Component {
 
     }
 
-
     static contextTypes = {}
     static propTypes = {}
     static defaultProps = {}
 }
+
