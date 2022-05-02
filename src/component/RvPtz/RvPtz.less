@@ -1,0 +1,100 @@
+.outer-ring{
+  margin: 0 auto;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: inset 0 0 25px #e8e8e8, 0 1px 0 #c3c3c3, 0 2px 0 #c9c9c9, 0 2px 3px #333;
+  i{
+    font-size: 20px;
+    cursor: pointer;
+    &:hover{
+      color: #00B176;
+    }
+  }
+  .caret-up{
+    position: absolute;
+    top: 6px;
+    left: 75px;
+    margin-left: -10px;
+  }
+  .caret-down{
+    position: absolute;
+    bottom: 6px;
+    left: 75px;
+    margin-left: -10px;
+  }
+  .caret-left{
+    position: absolute;
+    left: 6px;
+    top: 75px;
+    margin-top: -10px;
+  }
+  .caret-right{
+    position: absolute;
+    right: 6px;
+    top: 75px;
+    margin-top: -10px;
+  }
+  .ob-caret-left{
+    transform: rotate(45deg);
+    position: absolute;
+    top: 24px;
+    left: 24px;
+  }
+  .ob-caret-up{
+    transform: rotate(45deg);
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+  .ob-caret-right{
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+  }
+  .ob-caret-down{
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+  }
+  .inner-ring{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    .plus{
+      position: absolute;
+      top: 10px;
+      left: 40px;
+      margin-left: -10px;
+    }
+    .line{
+      height: 1px;
+      width: 100%;
+      background-color: #ddd;
+      position: absolute;
+      top: 39px;
+      left: 0;
+    }
+    .minus{
+      position: absolute;
+      bottom: 10px;
+      left: 40px;
+      margin-left: -10px;
+    }
+  
+  }
+}
+
+.ptz-speed{
+  margin-top: 220px;
+}

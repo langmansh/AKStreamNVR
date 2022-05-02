@@ -2,7 +2,7 @@ import request from '../util/request';
 import apiconfig from '../config/apiconfig'
 
 
-const { searchChannelConfigs, searchChannelConfig, deleteChannelConfig, updateChannelConfig, createChannelConfig, searchChannelConfigByVas, touchChannelProxyStream, saveChannelConfig, saveChannelConfigs, queryRecordMonthly, queryRecordDaily, getOnlineStreamInfoList, getRecordFileList, getHistroyRecordFileList, getHistroyRecordFileStatus, histroyVideo, getVideoChannelList, modifyVideoChannel, activeVideoChannel, addVideoChannel, getRecordPlanList, createRecordPlan, deleteRecordPlanByName, getMediaServerList,streamLive,streamStop,startRecord,stopRecord,deleteRecordFile,startMediaServer,stopMediaServer,restartMediaServer} = apiconfig.api;
+const { searchChannelConfigs, searchChannelConfig, deleteChannelConfig, updateChannelConfig, createChannelConfig, searchChannelConfigByVas, touchChannelProxyStream, saveChannelConfig, saveChannelConfigs, queryRecordMonthly, queryRecordDaily, getOnlineStreamInfoList, getRecordFileList, getHistroyRecordFileList, getHistroyRecordFileStatus, histroyVideo, getVideoChannelList, modifyVideoChannel, activeVideoChannel, addVideoChannel, getRecordPlanList, createRecordPlan, deleteRecordPlanByName, getMediaServerList,streamLive,streamStop,startRecord,stopRecord,deleteRecordFile,startMediaServer,stopMediaServer,restartMediaServer,ptzCtrl} = apiconfig.api;
 
 
 export async function findChannels(params) {
@@ -132,4 +132,8 @@ export async function StopMediaServer(mediaServerId) {
 
 export async function RestartMediaServer(mediaServerId) {
     return request({url: restartMediaServer+"?mediaServerId="+mediaServerId,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'get', data: null,});
+}
+
+export async function PtzCtrl(params) {
+    return request({url: ptzCtrl,config:{headers:{"AccessKey":apiconfig.AccessKey}}, method: 'post', data: params,});
 }
