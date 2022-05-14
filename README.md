@@ -14,11 +14,11 @@
 
 ### 快速启动
 
-（1）修改 src/config/apiconfig.js文件中的secret和AccessKey（secret为ZLMediaKit配置文件中的secret，AccessKey为AKStreamWeb配置文件的AccessKey）
-（2）修改 public/env-config.js 文件，REACT_APP_API_HOST为ZLMediaKit服务地址，AKSTREAM_WEB_API为AKStreamWeb服务地址
-（3）下载安装 npm或yarn（最新版）
-（4）还原包 npm install（yarn install）
-（5）启动 npm run start （yarn run start）
+（1）修改 src/config/apiconfig.js文件中的secret和AccessKey（secret为ZLMediaKit配置文件中的secret，AccessKey为AKStreamWeb配置文件的AccessKey）<br>
+（2）修改 public/env-config.js 文件，REACT_APP_API_HOST为ZLMediaKit服务地址，AKSTREAM_WEB_API为AKStreamWeb服务地址<br>
+（3）下载安装 npm或yarn（最新版）<br>
+（4）还原包 npm install（yarn install）<br>
+（5）启动 npm run start （yarn run start）<br>
 
 * 浏览器访问：`http://localhost:3000` （默认前端端口为：3000）
 
