@@ -34,10 +34,14 @@ export default class PlayForm extends React.Component {
 			{
 				this.setState({
                     playUrl:{
-                        flv:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId+'.live.flv',
-                        hls:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId+'/hls.m3u8',
-                        rtmp:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId,
-                        rtsp:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId,
+                        flv:res.data.playUrl[1],
+                        hls:res.data.playUrl[4],
+                        rtmp:res.data.playUrl[3],
+                        rtsp:res.data.playUrl[2],
+                        // flv:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId+'.live.flv',
+                        // hls:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId+'/hls.m3u8',
+                        // rtmp:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId,
+                        // rtsp:`${apiDomin}/`+this.state.channel.app+'/'+this.state.channel.mainId,
                     }
                 })
 			}

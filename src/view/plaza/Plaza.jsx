@@ -60,12 +60,12 @@ class MediaChannel extends React.Component {
                         }
 						console.log(snapshotPath)
                         // snapshotPath += "/"+ item.app+"/"+item.stream+".png"
-						snapshotPath += `${apiDomin}/`+item.app+"/"+item.mediaServerStreamInfo.stream+".flv"
+						snapshotPath += `${apiDomin}/`+item.app+"/"+item.mediaServerStreamInfo.stream+".live.flv"
                         return (
                             <List.Item className={"channel-py"}>
                                 <div className={"channel-py-snap"} onClick={()=>{
                                     const w=window.open('about:blank');
-                                    w.location.href=`/play?mediaServerIp=${item.mediaServerStreamInfo.mediaServerIp}&vhost=${item.vhost}&app=${item.app}&stream=${item.mediaServerStreamInfo.stream}`;
+                                    w.location.href=`/play?mediaServerIp=${item.mediaServerStreamInfo.mediaServerIp}&mediaServerId=${mediaServerId}&vhost=${item.vhost}&app=${item.app}&stream=${item.mediaServerStreamInfo.stream}`;
                                 }}>
                                     <RvImage src={snapshotPath} fallbackSrc={black}/>
                                 </div>

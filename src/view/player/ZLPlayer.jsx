@@ -10,7 +10,7 @@ import ReactTimeout from "react-timeout";
 import classNames from "classnames";
 import {apiDomin} from "../../config/apiconfig";
 import AKStreamPlayer from '../../component/RvJessibuca/App.js';
-
+import {StreamLive} from "../../service/channel";
 
 @ReactTimeout
 export default class ZLPlayer extends React.Component {
@@ -76,30 +76,39 @@ export default class ZLPlayer extends React.Component {
         const ua = UAParser(global.navigator.userAgent);
         this.channelParams = queryString.parse(this.props.location.search);
 
-        const {mediaServerIp, vhost, app, stream, iframe=false} = this.channelParams;
-		const urldata = {
-			play_addrs:{
-				flv:`${apiDomin}/`+app+'/'+stream+'.live.flv',
-				hls:`${apiDomin}/`+app+'/'+stream+'/hls.m3u8',
-				rtmp:`${apiDomin}/`+app+'/'+stream,
-                rtsp:`${apiDomin}/`+app+'/'+stream,
+        const {mediaServerIp,mediaServerId, vhost, app, stream, iframe=false} = this.channelParams;
+
+        StreamLive(mediaServerId,stream).then(res => {
+			if(res._success && res._statusCode === 200 && res.data)
+			{
+                const urldata = {
+                    play_addrs:{
+                        flv:res.data.playUrl[1],
+                        hls:res.data.playUrl[4],
+                        rtmp:res.data.playUrl[3],
+                        rtsp:res.data.playUrl[2],
+                    }
+                }
+
+                this.setState({
+                    loading: true,
+                    iframe
+                }, () => {
+                    this.setState({
+                        channelData: urldata,
+                        currentUrl:urldata.play_addrs.flv,
+                        params: this.channelParams,
+                    }, () => {
+                        this.changePlayType("flvjs")
+                    })
+                    this.setState({
+                        loading: false,
+                    })
+                })
+
 			}
-		}
-		
-        this.setState({
-            loading: true,
-            iframe
-        }, () => {
-			this.setState({
-			    channelData: urldata,
-                currentUrl:urldata.play_addrs.flv,
-			    params: this.channelParams,
-			}, () => {
-			    this.changePlayType("flvjs")
-			})
-			this.setState({
-			    loading: false,
-			})
+
+
         })
 
         this.loadData(this.state.recordparams)
