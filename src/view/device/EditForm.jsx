@@ -377,6 +377,37 @@ export default class EditForm extends React.Component {
                 comp: <RvSwitch />,
             }, {
 
+                label: '分享通道',
+                extra: '如果为true,则此通道可以被推往其他服务器',
+                name: 'isShareChannel',
+                option: {
+                    rules: [{
+                        required: false,
+                    },]
+                },
+                comp: <RvSwitch />,
+            },{
+
+                label: '分享通道地址',
+                extra: '分享通道为true,地址为空，表示通道可分享给GB28181服务器。都不为空表示分享GB服务器同时还可分享给其他流媒体服务器',
+                name: 'shareUrl',
+                option: {
+                    rules: [{
+                        required: false,
+                    },]
+                },
+            }, {
+
+                label: '共享通道ID',
+                extra: 'gb28181时可以是设备ID，其他服务时可按照其他服务的规则来确定ID',
+                name: 'shareDeviceId',
+                option: {
+                    rules: [{
+                        required: false,
+                    },]
+                },
+            },{
+
                 label: '启用',
                 extra: '是否启用设备',
                 name: 'enabled',
