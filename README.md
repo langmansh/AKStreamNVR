@@ -10,7 +10,7 @@
 如果对您有帮助，点击右上角⭐Star⭐关注 ，感谢支持开源！
 ```
 ### 在线Demo演示
-演示地址：http://akstream.govfun.com:10059/
+演示地址：http://47.99.55.87:3000/
 
 ### 快速启动
 
@@ -20,6 +20,7 @@
 （4）还原包 npm install（yarn install）<br>
 （5）启动 npm run start （yarn run start）<br>
 
+* 注意：请使用17以下的node版本，否则编译会出错，建议使用16.14.0版本。
 * 浏览器访问：`http://localhost:3000` （默认前端端口为：3000）
 
 ### 效果图
