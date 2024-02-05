@@ -35,6 +35,15 @@ const metadata = {
             routerInnerComponent: () => import(`@/view/plaza/Plaza`),
             routerExact: false,
         },
+        {
+		    name: '设备列表',
+		    path: 'devicelist',
+		    icon: 'rvicon-map',
+		    navClass: "module-bpm",
+		    type: "menu",
+		    routerInnerComponent: () => import(`@/view/devicelist/DeviceList`),
+		    routerExact: false,
+		},
 		{
 		    name: '设备管理',
 		    path: 'device',
@@ -52,16 +61,16 @@ const metadata = {
 		    type: "menu",
 		    routerInnerComponent: () => import(`@/view/recordplan/RecordPlan`),
 		    routerExact: false,
-		},
-        {
-            name: '录像回看',
-            path: 'playback',
-            icon: 'rvicon-map',
-            navClass: "module-bpm",
-            type: "menu",
-            routerInnerComponent: () => import(`@/view/playback/Playback`),
-            routerExact: false,
-        }
+		}
+        // {
+        //     name: '录像回看',
+        //     path: 'playback',
+        //     icon: 'rvicon-map',
+        //     navClass: "module-bpm",
+        //     type: "menu",
+        //     routerInnerComponent: () => import(`@/view/playback/Playback`),
+        //     routerExact: false,
+        // }
         // {
         //     name: '通道配置',
         //     path: 'channel',

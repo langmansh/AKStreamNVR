@@ -1,0 +1,42 @@
+.playback-table{
+    background-color: #fff;
+  
+    .ant-pagination{
+      margin-right: 15px;
+    }
+  }
+  
+  .playback-play-container{
+    position: relative;
+  
+  }
+  .playback-play-header{
+    display: flex;
+    margin-bottom: 50px;
+  
+    .playback-player{
+      width: 720px;
+      height: 405px;
+      position: relative;
+  
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+    }
+  
+    .playback-calendar{
+      flex:1;
+      border: 1px solid #d9d9d9;
+      margin-left:15px;
+  
+      .ant-fullcalendar-header{
+        .ant-radio-group{
+          display: none;
+        }
+      }
+    }
+  }
+  
+  

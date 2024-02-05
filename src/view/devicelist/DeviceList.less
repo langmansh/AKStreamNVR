@@ -1,0 +1,41 @@
+.device-table{
+  background-color: #fff;
+
+  .ant-pagination{
+    margin-right: 15px;
+  }
+}
+
+.device-play-container{
+  position: relative;
+
+}
+.device-play-header{
+  display: flex;
+  margin-bottom: 15px;
+
+  .device-player{
+    width: 720px;
+    height: 405px;
+    position: relative;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+
+  .device-calendar{
+    flex:1;
+    border: 1px solid #d9d9d9;
+    margin-left:15px;
+
+    .ant-fullcalendar-header{
+      .ant-radio-group{
+        display: none;
+      }
+    }
+  }
+}
+

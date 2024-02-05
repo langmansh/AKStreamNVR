@@ -14,6 +14,7 @@ module.exports = {
         login: `${APIV1}/login`,
 		
         // searchChannelConfigs: `${apiAKStream}/MediaServer/GetOnlineStreamInfoList`,
+        getSipDeviceList:`${apiAKStream}/SipGate/GetSipDeviceList`,
         ptzCtrl:`${apiAKStream}/SipGate/PtzCtrl`,
         restartMediaServer:`${apiAKStream}/AKStreamKeeper/RestartMediaServer`,
         stopMediaServer:`${apiAKStream}/AKStreamKeeper/ShutdownMediaServer`,
